@@ -1,12 +1,23 @@
 import React, { useCallback, useState } from "react";
 import { BsNewspaper, BsCheck } from "react-icons/bs";
 
-import { Container, ImptBox, ErrorBox } from "./styles";
+import { Container, ImptBox } from "./styles";
 import Input from "../input";
 import Button from "../button";
+import Title from "../title";
+import ErrorBox from "../error-box";
 
-const StepOne: React.FC<{ setNextStep: VoidFunction }> = (props) => {
-  const [email, setEmail] = useState<string>("");
+interface StepOneInterface {
+  setNextStep: VoidFunction;
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const StepOne: React.FC<StepOneInterface> = ({
+  setNextStep,
+  email,
+  setEmail,
+}) => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
 
@@ -32,7 +43,7 @@ const StepOne: React.FC<{ setNextStep: VoidFunction }> = (props) => {
       );
       if (res.status === 200) {
         setLoading(false);
-        props.setNextStep();
+        setNextStep();
       } else {
         throw new Error("API returns status diffrent than 200");
       }
@@ -45,10 +56,10 @@ const StepOne: React.FC<{ setNextStep: VoidFunction }> = (props) => {
 
   return (
     <Container>
-      <h1>
+      <Title>
         <BsNewspaper /> Newsletter Sign Up - be the first to find out news about
         our brand and products
-      </h1>
+      </Title>
       <p>
         sign up to reciveexclusive offers, news and features about our range of
         products from G2S Limited <a href="#">see our privacy policy</a>
