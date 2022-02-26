@@ -8,6 +8,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: Open-Sans, Helvetica, Sans-Serif;
     font-size: 16px;
   }
+  button{
+    cursor: pointer;
+  }
+  *, *::after, *::before {
+    box-sizing: border-box;
+  }
 `;
 
 export default GlobalStyle;

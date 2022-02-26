@@ -8,8 +8,10 @@ export const Container = styled.main`
   align-items: center;
 `;
 
-export const ContentBox = styled.div`
+export const ContentBox = styled.div<{ isVisible: boolean }>`
   background-color: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.yellow};
-  padding: 10px;
+  border: 2px solid ${({ theme }) => theme.colors.yellow};
+  padding: 15px;
+  position: relative;
+  display: ${({ isVisible }) => (isVisible ? "block" : "none")};
 `;
