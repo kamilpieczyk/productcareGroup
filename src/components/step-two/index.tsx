@@ -26,6 +26,10 @@ const StepTwo: React.FC<{ email: string }> = ({ email }) => {
     []
   );
 
+  // *** THIS FUNCTION IS RESPONSIBLE FOR PATCH REQUEST TO PROVIDED EMAIL
+  // *** API. IF RESPONSE STATUS IS EQUAL TO 200 THE SUCCESS MESSAGE IS SHOWN.
+  // *** IN ANY OTHER CASE FUNCTION WILL THROW AN ERROR AND SHOW THE ERROR MSG.
+  // ***
   const handlePATCHDetails = useCallback(async () => {
     setLoading(true);
     try {
@@ -57,6 +61,7 @@ const StepTwo: React.FC<{ email: string }> = ({ email }) => {
     }
   }, [name, phone, postcode, email]);
 
+  // *** THIS ARRAY PROVIDES ALL REQUIRED INPUTS
   const inputs = [
     {
       name: "name",

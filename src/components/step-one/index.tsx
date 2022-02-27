@@ -21,10 +21,17 @@ const StepOne: React.FC<StepOneInterface> = ({
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
 
+  // *** THIS FUNCTION IS RESPONSIBLE FOR EMAIL VALUE STATE PAST
+  // *** BY PROPS.
+  // ***
   const handleEmail = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   }, []);
 
+  // *** THIS FUNCTION POST DATA TO THE EMAIL API AND IF RESPONSE STATUS IS 200,
+  // *** GO FURTHER TO 2ND STEP. OTHERWISE CATCH SET AN ERROR MESSAGE. IN THIS CASE
+  // *** THERE IS ONLY ONE ERROR HANDLE
+  // ***
   const handlePostData = useCallback(async () => {
     setLoading(true);
     try {
